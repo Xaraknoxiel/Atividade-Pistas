@@ -1,0 +1,83 @@
+services:
+  
+  nginx:
+    image: nginx:stable
+    hostname: nginx
+    container_name: custom.nginxs
+    ports:
+      - "8080:80"
+    volumes: 
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - intra_net
+    restart: always
+  
+  main:
+    image: nginx:alpine
+    container_name: main_container
+    ports:
+      - "8081:80"
+    volumes:
+      - ./main:/usr/share/nginx/html/:ro
+    networks:
+      - intra_net
+    restart: always
+  
+  clue1:
+    image: nginx:alpine
+    container_name: clue1_container
+    ports:
+      - "8082:80"
+    volumes:
+      - ./clue1:/usr/share/nginx/html/:ro
+    networks:
+      - intra_net
+    restart: always
+  
+  clue2:
+    image: nginx:alpine
+    container_name: clue2_container
+    ports:
+      - "8083:80"
+    volumes:
+      - ./clue2:/usr/share/nginx/html/:ro
+    networks:
+      - intra_net
+    restart: always
+  
+  clue3:
+    image: nginx:alpine
+    container_name: clue3_container
+    ports:
+      - "8084:80"
+    volumes:
+      - ./clue3:/usr/share/nginx/html/:ro
+    networks:
+      - intra_net
+    restart: always
+
+  clue4:
+    image: nginx:alpine
+    container_name: clue4_container
+    ports:
+      - "8085:80"
+    volumes:
+      - ./clue4:/usr/share/nginx/html/:ro
+    networks:
+      - intra_net
+    restart: always
+
+  clue5:
+    image: nginx:alpine
+    container_name: clue5_container
+    ports:
+      - "8086:80"
+    volumes:
+      - ./clue5:/usr/share/nginx/html/:ro
+    networks:
+      - intra_net
+    restart: always
+
+networks:
+  intra_net:
+     driver: bridge
